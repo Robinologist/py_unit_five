@@ -1,6 +1,12 @@
-def fibonacci(x):
-    """
-    Ex. fibonacci(5) returns "1 1 2 3 5 "
-    :param number: The number of Fibonacci terms to return
-    :return: A string consisting of a number of terms of the Fibonacci sequence.
-    """
+def generateDigit(digits):
+    a = 1
+    b = 0
+    c = 0
+    for x in range(digits):
+        c=a+b
+        a=b
+        b=c
+        print(c)
+
+digits=int(input("How many digits would you like to print?\n"))
+generateDigit(digits)
