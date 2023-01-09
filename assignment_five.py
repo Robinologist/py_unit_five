@@ -1,4 +1,12 @@
 #THE GAME OF NIM
+
+"""
+Robin Engdahl
+January 9th
+A python recreation of the game of Nim, where two players take turns removing sticks from 3 piles.
+The last person to draw a stick loses.
+"""
+
 import random                       #used for the computer's random moves
 import time                         #used for delays
 
@@ -15,29 +23,7 @@ boardRow3=["|","|","|","|","|","|","|"]
 
 
 def refreshBoard():
-
-
     print("",boardRow1,"\n",boardRow2,"\n",boardRow3)
-
-
-#row1Visual = ""
-#row2Visual = ""
-#row3Visual = ""
-#
-#if len(boardRow1) > 0:
-#    for x in range(len(boardRow1)):
-#        row1Visual = row1Visual + " |"
-#    print(row1Visual)
-#
-#if len(boardRow2) > 0:
-#    for x in range(len(boardRow2)):
-#        row2Visual = row2Visual + " |"
-#    print(row2Visual)
-#
-#if len(boardRow3) > 0:
-#    for x in range(len(boardRow3)):
-#        row3Visual = row3Visual + " |"
-#    print(row3Visual)
 
 
 #============================================#
@@ -51,7 +37,7 @@ def playerLose():                                   #self-explanatory
 
 
 def computerLose():                                         #also self-explanatory
-    print("The computer drew the final piece. You lose!")
+    print("The computer drew the final piece. You win!")
 
 
 #============================================#
@@ -190,7 +176,7 @@ def checkValidNumber(editStickRow,editStickNumber):
 #============================================#
 
 
-def gameloop():
+def gameloop():  #The main loop of gameplay, in which the player takes their turn before calling the computer's turn function
     #player turn
     refreshBoard()
     editStickRow=int(input("Which row would you like to take sticks from?\nRow: "))
@@ -201,13 +187,11 @@ def gameloop():
         print("That's not a valid row")
         gameloop()
 
-    if len(boardRow1) == 0 and len(boardRow2) == 0 and len(boardRow3) == 0:           #check if the board still has sticks, of not then the player took the last one and must lose
+    if len(boardRow1) == 0 and len(boardRow2) == 0 and len(boardRow3) == 0:  #check if the board still has sticks, of not then the player took the last one and must lose
         playerLose()
 
     else:
         computerTurn()
-
-    checkPlayerLose()
 
 
 #============================================#
