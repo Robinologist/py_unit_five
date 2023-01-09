@@ -29,7 +29,7 @@ def refreshBoard():
 #============================================#
 
 
-def playerLose():                                   #self-explanatory
+def playerLose():                                           #self-explanatory
     print("You drew the final piece! You lose.")
 
 
@@ -43,7 +43,7 @@ def computerLose():                                         #also self-explanato
 #============================================#
 
 
-def checkComputerLose():
+def checkComputerLose():                                    #checks if there are any sticks left, if not then the computer must have drawn the last one
     if len(boardRow1) == 0 and len(boardRow2) == 0 and len(boardRow3) == 0:
         computerLose()
     else:
@@ -53,7 +53,7 @@ def checkComputerLose():
 #============================================#
 
 
-def checkPlayerLose():
+def checkPlayerLose():                                      #checks if there are any sticks left, if not then the player must have drawn the last one
     if len(boardRow1) == 0 and len(boardRow2) == 0 and len(boardRow3) == 0:
         playerLose()
     else:
@@ -63,10 +63,10 @@ def checkPlayerLose():
 # ============================================#
 
 
-def pickNewRow():
+def pickNewRow():                                           #picks a random row for the computer to take from
     Row = random.randint(1, 3)
 
-    # Check if row is empty and try a different row if it is
+                                                            #checks if the chosen row is empty and if it is, pick a different row
     if Row == 1 and len(boardRow1) == 0:
         return pickNewRow()
     elif Row == 2 and len(boardRow2) == 0:
@@ -80,23 +80,23 @@ def pickNewRow():
 #============================================#
 
 
-def pickNewNumber(Row):
+def pickNewNumber(Row):                                     #picks a random number of sticks to take
     Number = random.randint(1, 7)
 
-    if  Row == 1:
+    if  Row == 1:                                           #checks if that number of sticks exists if the chosen row is row 1
         if Number > len(boardRow1):
             return pickNewNumber(Row)
         else:
             return Number
 
     elif  Row == 2:
-        if Number > len(boardRow2):
+        if Number > len(boardRow2):                         #checks if that number of sticks exists if the chosen row is row 2
             return pickNewNumber(Row)
         else:
             return Number
 
     elif  Row == 3:
-        if Number > len(boardRow3):
+        if Number > len(boardRow3):                         #checks if that number of sticks exists if the chosen row is row 3
             return pickNewNumber(Row)
         else:
             return Number
@@ -106,8 +106,8 @@ def pickNewNumber(Row):
 
 
 def computerTurn():
-    editStickRow = pickNewRow()                         #Pick a random row
-    editStickNumber = pickNewNumber(editStickRow)       #Pick a random number <= the length of the row
+    editStickRow = pickNewRow()                         #Picks a random row
+    editStickNumber = pickNewNumber(editStickRow)       #Picks a random number <= the length of the row
 
     # Take the sticks from the chosen row
     storeStickNumber = editStickNumber
@@ -138,7 +138,7 @@ def checkValidNumber(editStickRow,editStickNumber):
                     del boardRow1[0]
                     editStickNumber = editStickNumber - 1
 
-                refreshBoard()                          #if number and row are valid, show the player the updated board
+                refreshBoard()                            #if number and row are valid, show the player the updated board
 
             else:
                 print("There aren't enough sticks in that row:")
